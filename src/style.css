@@ -271,7 +271,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:3r
 /* Section reveal stagger */
 .reveal:nth-child(2){transition-delay:.1s}
 .reveal:nth-child(3){transition-delay:.2s}
-.reveal:nth-child(4){transition-delay:.3s}\n
+.reveal:nth-child(4){transition-delay:.3s}
 
 /* =========================================
    PROJECT GALLERY PREVIEW
@@ -291,6 +291,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:3r
   height: 100%;
   overflow: hidden;
   position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-radius: 8px;
 }
 
 .gallery-img-wrap img {

@@ -20,14 +20,11 @@ function hideLoader() {
       loader.classList.add('hide');
       setTimeout(()=>loader.remove(),600);
     }
-  }, 3000); // Wait 3 seconds as requested
+  }, 1000); // Reduced to 1 second
 }
 
-if (document.readyState === 'complete') {
-  hideLoader();
-} else {
-  window.addEventListener('load', hideLoader);
-}
+// Call it directly since type="module" runs after DOM parse
+hideLoader();
 
 // PARTICLES
 const canvas=document.getElementById('particles-canvas');
@@ -141,7 +138,7 @@ window.sendMsg = function(e){
     btn.style.background='';
   },3000);
 };
-\n
+
 // =========================================
 // GALLERY LIGHTBOX LOGIC
 // =========================================
