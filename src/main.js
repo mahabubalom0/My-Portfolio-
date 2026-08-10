@@ -472,15 +472,12 @@ if(canvas) {
   for(let i=0; i<5; i++) people.push(new Person());
 
   let azanTimer = 0;
-  const AZAN_INTERVAL = 600; // Azan triggers quickly (every 10s)
-  const AZAN_DURATION = 9000; // Azan audio lasts about 150s
+  const AZAN_INTERVAL = 1200; // Works in room for 20s
+  const AZAN_DURATION = 1200; // Stays at mosque for 20s
   let isAzan = false;
   
-  // Audio for Azan (Plays mp4 audio track using hidden video for compatibility)
-  const azanAudio = document.createElement('video');
-  azanAudio.src = '/Azan.mp4';
-  azanAudio.style.display = 'none';
-  document.body.appendChild(azanAudio);
+  // Audio for Azan (uses HTML element for reliability)
+  const azanAudio = document.getElementById('azanAudioPlayer');
 
   function connect(){
     for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
