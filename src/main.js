@@ -536,8 +536,19 @@ if(canvas) {
       if (!isAzan) {
         isAzan = true;
         azanAudio.volume = 0.2; // Low volume always
+        azanAudio.pause();
         azanAudio.currentTime = 0;
-        azanAudio.play().catch(e => console.log("Audio play blocked. User must interact (click) the page first."));
+        azanAudio.load(); // Force browser to reset audio state
+        
+        let playPromise = azanAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            window.isAzanSuccessfullyPlaying = true;
+          }).catch(e => {
+            console.log("Audio play blocked. User must interact (click) the page first.");
+            window.isAzanSuccessfullyPlaying = false;
+          });
+        }
       }
       
       // Stop the audio after exactly 10 seconds (600 frames)
@@ -546,14 +557,18 @@ if(canvas) {
       }
       
       // Starts praying (walking) 2 seconds after Azan starts (120 frames)
-      if (azanTimer > AZAN_INTERVAL + 120) {
+      // Only goes to pray if the audio actually played successfully!
+      if (window.isAzanSuccessfullyPlaying && azanTimer > AZAN_INTERVAL + 120) {
         shouldPray = true;
       }
       
       if (azanTimer > AZAN_INTERVAL + AZAN_DURATION) {
         isAzan = false;
         shouldPray = false;
+        window.isAzanSuccessfullyPlaying = false;
         azanTimer = 0;
+        azanAudio.pause();
+        azanAudio.currentTime = 0;
       }
     }
 
