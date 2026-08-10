@@ -77,10 +77,16 @@ section{position:relative;z-index:1;padding:6rem 2rem}
 .hero-img-ring{position:absolute;inset:-20px;border-radius:50%;border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--accent),var(--accent2)) border-box;animation:spin 8s linear infinite}
 .hero-img-ring2{position:absolute;inset:-40px;border-radius:50%;border:1px dashed rgba(124,58,237,0.3);animation:spin 15s linear infinite reverse}
 .hero-photo{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--border);position:relative;z-index:1;box-shadow:0 0 40px rgba(124,58,237,0.3)}
-.float-icon{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.6rem 1rem;font-size:.75rem;font-weight:600;color:var(--text);backdrop-filter:blur(10px);white-space:nowrap;animation:float 3s ease-in-out infinite;font-family:var(--font-sub)}
-.float-icon:nth-child(2){top:5%;right:-10px;animation-delay:.5s}
-.float-icon:nth-child(3){bottom:10%;left:-20px;animation-delay:1s;color:var(--accent2)}
-.float-icon:nth-child(4){top:55%;right:-45px;animation-delay:1.5s;color:var(--accent3)}
+.float-icon{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.6rem 1rem;font-size:.75rem;font-weight:600;color:var(--text);backdrop-filter:blur(10px);white-space:nowrap;animation:float 3s ease-in-out infinite;font-family:var(--font-sub);z-index:2}
+.float-icon:nth-child(4){animation-delay:.2s}
+.float-icon:nth-child(5){animation-delay:.8s}
+.float-icon:nth-child(6){animation-delay:1.4s}
+.float-icon:nth-child(7){animation-delay:.5s}
+.float-icon:nth-child(8){animation-delay:1.1s}
+.float-icon:nth-child(9){animation-delay:1.7s}
+.float-icon:nth-child(10){animation-delay:.3s}
+.float-icon:nth-child(11){animation-delay:1.3s}
+.float-icon:nth-child(12){animation-delay:.7s}
 
 /* GLASS CARD */
 .glass{background:var(--card);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(20px);transition:.3s}
