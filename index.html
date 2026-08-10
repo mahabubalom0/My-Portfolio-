@@ -199,7 +199,7 @@
     </div>
     <div class="projects-grid">
 
-      <div class="project-card reveal" onclick="openGallery('dino_didi', 7)">
+      <div class="project-card reveal" onclick="openGallery('dino_didi', 7, '/images/projects/dino_didi/dino didi.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/dino_didi/dino didi.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -216,7 +216,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" onclick="openGallery('expense_tracker', 27)">
+      <div class="project-card reveal" onclick="openGallery('expense_tracker', 27, '/images/projects/expense_tracker/video.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/expense_tracker/video.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -233,7 +233,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" onclick="openGallery('smart_banking', 22)">
+      <div class="project-card reveal" onclick="openGallery('smart_banking', 22, '/images/projects/smart_banking/smart banking.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/smart_banking/smart banking.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -250,7 +250,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" onclick="openGallery('news_app', 7)">
+      <div class="project-card reveal" onclick="openGallery('news_app', 7, '/images/projects/news_app/news app video.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/news_app/news app video.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -286,7 +286,7 @@
       </div>
       
       
-      <div class="project-card reveal" onclick="openGallery('weather_application', 4)">
+      <div class="project-card reveal" onclick="openGallery('weather_application', 4, '/images/projects/weather_application/weather.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/weather_application/weather.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -304,7 +304,7 @@
       </div>
       
       
-      <div class="project-card reveal" onclick="openGallery('writing_note', 5)">
+      <div class="project-card reveal" onclick="openGallery('writing_note', 5, '/images/projects/writing_note/screen-20260809-224350.mp4')">
         <div class="project-video-preview" style="width: 100%; height: 200px; overflow: hidden; position: relative; border-radius: 8px 8px 0 0;">
           <video src="/images/projects/writing_note/screen-20260809-224350.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
@@ -591,6 +591,7 @@
     <button class="gallery-nav prev" onclick="changeGalleryImage(-1)"><i class="fas fa-chevron-left"></i></button>
     <button class="gallery-nav next" onclick="changeGalleryImage(1)"><i class="fas fa-chevron-right"></i></button>
     <div class="gallery-content" id="galleryContent">
+      <video id="galleryMainVideo" controls autoplay playsinline style="display:none; max-width:100%; max-height:80vh; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.5);"></video>
       <img id="galleryMainImage" src="" alt="Gallery Full Image">
       <div class="gallery-counter" id="galleryCounter">1 / 1</div>
       <div class="gallery-loader" id="galleryLoader"></div>

@@ -146,10 +146,15 @@ let currentGallery = [];
 let currentGalleryIndex = 0;
 let currentProjectId = '';
 
-window.openGallery = function(projectId, totalImages) {
+window.openGallery = function(projectId, totalImages, videoUrl) {
   currentProjectId = projectId;
   // Create an array of image paths for the project
   currentGallery = Array.from({length: totalImages}, (_, i) => `/images/projects/${projectId}/${i+1}.jpg`);
+  
+  if (videoUrl) {
+    currentGallery.push(videoUrl);
+  }
+  
   currentGalleryIndex = 0;
   
   const modal = document.getElementById('galleryModal');
@@ -162,9 +167,13 @@ window.openGallery = function(projectId, totalImages) {
 
 window.closeGallery = function() {
   const modal = document.getElementById('galleryModal');
+  const videoEl = document.getElementById('galleryMainVideo');
   if(modal) {
     modal.classList.remove('active');
     document.body.style.overflow = '';
+  }
+  if (videoEl) {
+    videoEl.pause();
   }
 };
 
@@ -180,25 +189,46 @@ window.changeGalleryImage = function(direction) {
 
 function updateGalleryImage() {
   const img = document.getElementById('galleryMainImage');
+  const videoEl = document.getElementById('galleryMainVideo');
   const counter = document.getElementById('galleryCounter');
   const content = document.getElementById('galleryContent');
   
   if(!img || !counter || !content) return;
 
-  img.classList.remove('loaded');
-  content.classList.add('loading');
-  
-  img.onload = function() {
-    img.classList.add('loaded');
+  const currentSrc = currentGallery[currentGalleryIndex];
+  const isVideo = currentSrc && currentSrc.endsWith('.mp4');
+
+  if (isVideo) {
+    img.style.display = 'none';
+    if (videoEl) {
+      videoEl.style.display = 'block';
+      videoEl.src = currentSrc;
+      videoEl.play().catch(e => console.log('Video play prevented:', e));
+    }
     content.classList.remove('loading');
-  };
+  } else {
+    if (videoEl) {
+      videoEl.style.display = 'none';
+      videoEl.pause();
+    }
+    img.style.display = 'block';
+    
+    img.classList.remove('loaded');
+    content.classList.add('loading');
+    
+    img.onload = function() {
+      img.classList.add('loaded');
+      content.classList.remove('loading');
+    };
+    
+    img.onerror = function() {
+      // Fallback if image hasn't been added yet by the user
+      img.src = `https://via.placeholder.com/800x600/1e293b/ffffff?text=${currentProjectId}+-+(Image+${currentGalleryIndex+1}+Not+Found)`;
+    };
+    
+    img.src = currentSrc;
+  }
   
-  img.onerror = function() {
-    // Fallback if image hasn't been added yet by the user
-    img.src = `https://via.placeholder.com/800x600/1e293b/ffffff?text=${currentProjectId}+-+(Image+${currentGalleryIndex+1}+Not+Found)`;
-  };
-  
-  img.src = currentGallery[currentGalleryIndex];
   counter.innerText = `${currentGalleryIndex + 1} / ${currentGallery.length}`;
 }
 
